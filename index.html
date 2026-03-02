@@ -302,6 +302,14 @@
         const slider = document.getElementById('photoSlider');
         const dots = document.getElementById('sliderDots').children;
         
+        window.addEventListener('load', () => {
+            slider.scrollLeft = 0;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            if (dots[0]) dots[0].classList.add('active');
+        });
+        
         slider.addEventListener('scroll', () => {
             const slideWidth = slider.querySelector('.slide').clientWidth + 15;
             let index = Math.round(slider.scrollLeft / slideWidth);
